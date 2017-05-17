@@ -135,17 +135,4 @@ if (! function_exists('member_not_found')) {
     }
 }
 
-if (! function_exists('register_failed')) {
-    /**
-     * @param string $message
-     * @param array $data
-     * @param string $type
-     * @return JsonResponse
-     */
-    function register_failed(string $message = 'Failed.', array $data = [], string $type = ''): JsonResponse
-    {
-        return respond($message, MEMBER_REGISTER_FAILED_CODE, $data, $type);
-    }
-}
-
 
