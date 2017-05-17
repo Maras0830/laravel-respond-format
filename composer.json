@@ -1,0 +1,24 @@
+{
+    "name": "maras0830/laravel-respond-format",
+    "description": "Normalization respond api format.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maras Chen",
+            "email": "maraschen@4gamers.com.tw"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/respond.php"
+        ],
+        "psr-4": {
+            "RespondFormat\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.1",
+    },
+}
