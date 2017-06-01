@@ -140,11 +140,11 @@ if (! function_exists('member_not_found')) {
     }
 }
 
-if (! function_exists('invalid_form_data')) {
+if (! function_exists('form_data_invalid')) {
     /**
      * @return JsonResponse
      */
-    function invalid_form_data($data): JsonResponse
+    function form_data_invalid($data): JsonResponse
     {
         return respond('invalid form data.', INVALID_FORM_DATA_CODE, $data, INVALID_FORM_DATA);
     }
