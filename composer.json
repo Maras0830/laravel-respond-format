@@ -14,11 +14,13 @@
             "src/respond.php"
         ],
         "psr-4": {
-            "RespondFormat\\": "src/"
         }
     },
     "require": {
-        "php": ">=7.1"
+        "php": ">=7.1",
+        "laravel/framework": ">=5.1"
+    },
+    "require-dev": {
     },
     "minimum-stability": "stable"
 }

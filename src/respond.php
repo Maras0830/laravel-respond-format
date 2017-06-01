@@ -100,7 +100,7 @@ if (! function_exists('not_found')) {
      */
     function not_found(): JsonResponse
     {
-        return respond('Data not found.', NOT_FOUND_CODE, [], 'data_not_found', NOT_FOUND_STATUS);
+        return respond('Data not found.', NOT_FOUND_CODE, [], NOT_FOUND_STATUS);
     }
 }
 
@@ -122,7 +122,7 @@ if (! function_exists('token_not_found')) {
      */
     function token_not_found(): JsonResponse
     {
-        return respond('Token not found.', TOKEN_NOT_FOUND_CODE, [], 'token_required', TOKEN_NOT_FOUND);
+        return respond('Token not found.', TOKEN_NOT_FOUND_CODE, [], TOKEN_NOT_FOUND);
     }
 }
 
@@ -133,7 +133,7 @@ if (! function_exists('member_not_found')) {
      */
     function member_not_found(): JsonResponse
     {
-        return respond('Member not found.', MEMBER_NOT_FOUND_CODE, [], 'member_not_fund', MEMBER_NOT_FOUND);
+        return respond('Member not found.', MEMBER_NOT_FOUND_CODE, [], MEMBER_NOT_FOUND);
     }
 }
 
