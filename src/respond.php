@@ -3,17 +3,17 @@
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
-CONST SUCCESS_STATUS = 'Success.';
-CONST NOT_FOUND_STATUS = 'Not Found.';
-CONST TOKEN_NOT_FOUND = 'Token Not Found.';
-CONST MEMBER_NOT_FOUND = 'Member Not Found.';
-CONST INPUT_IS_REQUIRED = ' is required';
+CONST SUCCESS_STATUS = 'success';
+CONST NOT_FOUND_STATUS = 'not_found';
+CONST TOKEN_NOT_FOUND = 'token_not_found';
+CONST MEMBER_NOT_FOUND = 'member_not_found';
+CONST INPUT_IS_REQUIRED = 'input_required';
 
-CONST SUCCESS_CODE = Response::HTTP_OK;
-CONST NOT_FOUND_CODE = Response::HTTP_NOT_FOUND;
-CONST TOKEN_NOT_FOUND_CODE = Response::HTTP_NON_AUTHORITATIVE_INFORMATION;
-CONST MEMBER_NOT_FOUND_CODE = Response::HTTP_NOT_FOUND;
-CONST INPUT_IS_REQUIRED_CODE = Response::HTTP_UNPROCESSABLE_ENTITY;
+CONST SUCCESS_CODE = Response::HTTP_OK; // 200
+CONST NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
+CONST TOKEN_NOT_FOUND_CODE = Response::HTTP_NON_AUTHORITATIVE_INFORMATION; // 203
+CONST MEMBER_NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
+CONST INPUT_IS_REQUIRED_CODE = Response::HTTP_UNPROCESSABLE_ENTITY; // 422
 
 if (! function_exists('respond')) {
     /**
@@ -65,7 +65,7 @@ if (! function_exists('lists')) {
             "to" => $per_page * $current_page
         ];
 
-        return respond(SUCCESS_STATUS, SUCCESS_CODE, $data, $list_name, $paginator);
+        return respond('Success.', SUCCESS_CODE, $data, SUCCESS_STATUS, $paginator);
     }
 }
 
@@ -78,7 +78,7 @@ if (! function_exists('single')) {
      */
     function single($data): JsonResponse
     {
-        return respond(SUCCESS_STATUS, SUCCESS_CODE, $data);
+        return respond('Success.', SUCCESS_CODE, $data, SUCCESS_STATUS);
     }
 }
 
@@ -90,7 +90,7 @@ if (! function_exists('register_group_success')) {
      */
     function register_group_success(array $tickets): JsonResponse
     {
-        return respond(SUCCESS_STATUS, SUCCESS_CODE, $tickets);
+        return respond('Success.', SUCCESS_CODE, $tickets, SUCCESS_STATUS);
     }
 }
 
@@ -100,7 +100,7 @@ if (! function_exists('not_found')) {
      */
     function not_found(): JsonResponse
     {
-        return respond(NOT_FOUND_STATUS, NOT_FOUND_CODE, [], 'data_not_found');
+        return respond('Data not found.', NOT_FOUND_CODE, [], 'data_not_found', NOT_FOUND_STATUS);
     }
 }
 
@@ -111,7 +111,7 @@ if (! function_exists('input_is_required')) {
      */
     function input_is_required($data): JsonResponse
     {
-        return respond(INPUT_IS_REQUIRED, INPUT_IS_REQUIRED_CODE, $data);
+        return respond('Input required.', INPUT_IS_REQUIRED_CODE, $data, INPUT_IS_REQUIRED);
     }
 }
 
@@ -122,7 +122,7 @@ if (! function_exists('token_not_found')) {
      */
     function token_not_found(): JsonResponse
     {
-        return respond(TOKEN_NOT_FOUND, TOKEN_NOT_FOUND_CODE, [], 'token_required');
+        return respond('Token not found.', TOKEN_NOT_FOUND_CODE, [], 'token_required', TOKEN_NOT_FOUND);
     }
 }
 
@@ -133,7 +133,7 @@ if (! function_exists('member_not_found')) {
      */
     function member_not_found(): JsonResponse
     {
-        return respond(MEMBER_NOT_FOUND, MEMBER_NOT_FOUND_CODE, [], 'member_not_fund');
+        return respond('Member not found.', MEMBER_NOT_FOUND_CODE, [], 'member_not_fund', MEMBER_NOT_FOUND);
     }
 }
 
