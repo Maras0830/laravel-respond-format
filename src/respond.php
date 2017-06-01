@@ -5,13 +5,13 @@ use Illuminate\Http\Response;
 
 CONST SUCCESS_STATUS = 'success';
 CONST NOT_FOUND_STATUS = 'not_found';
-CONST TOKEN_NOT_FOUND = 'token_not_found';
+CONST TOKEN_REQUIRED = 'token_not_found';
 CONST MEMBER_NOT_FOUND = 'member_not_found';
 CONST INPUT_IS_REQUIRED = 'input_required';
 
 CONST SUCCESS_CODE = Response::HTTP_OK; // 200
 CONST NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
-CONST TOKEN_NOT_FOUND_CODE = Response::HTTP_NON_AUTHORITATIVE_INFORMATION; // 203
+CONST TOKEN_REQUIRED_CODE = Response::HTTP_NON_AUTHORITATIVE_INFORMATION; // 203
 CONST MEMBER_NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
 CONST INPUT_IS_REQUIRED_CODE = Response::HTTP_UNPROCESSABLE_ENTITY; // 422
 
@@ -116,13 +116,13 @@ if (! function_exists('input_is_required')) {
 }
 
 
-if (! function_exists('token_not_found')) {
+if (! function_exists('token_required')) {
     /**
      * @return JsonResponse
      */
-    function token_not_found(): JsonResponse
+    function token_required(): JsonResponse
     {
-        return respond('Token not found.', TOKEN_NOT_FOUND_CODE, [], TOKEN_NOT_FOUND);
+        return respond('Token required.', TOKEN_REQUIRED_CODE, [], TOKEN_REQUIRED);
     }
 }
 
