@@ -26,13 +26,15 @@ if (! function_exists('respond')) {
      */
     function respond(string $message, int $code = 200, $data = [], string $type = '', array $paginator = []): JsonResponse
     {
-        $response['status'] = $message;
-        $response['code'] = $code;
+        $response['error'] = [
+            'message' => $message,
+            'type' => $type,
+            'code' => $code
+        ];
 
         if (!empty($data))
             $response['data'] = $data;
-        if (!empty($type))
-            $response['type'] = $type;
+
         if (!empty($paginator))
             $response['paginator'] = $paginator;
 
