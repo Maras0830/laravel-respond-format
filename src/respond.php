@@ -8,12 +8,14 @@ CONST NOT_FOUND_STATUS = 'not_found';
 CONST TOKEN_REQUIRED = 'token_not_found';
 CONST MEMBER_NOT_FOUND = 'member_not_found';
 CONST INPUT_IS_REQUIRED = 'input_required';
+CONST INVALID_FORM_DATA = 'invalid_form_data';
 
 CONST SUCCESS_CODE = Response::HTTP_OK; // 200
 CONST NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
 CONST TOKEN_REQUIRED_CODE = Response::HTTP_NON_AUTHORITATIVE_INFORMATION; // 203
 CONST MEMBER_NOT_FOUND_CODE = Response::HTTP_NOT_FOUND; // 404
 CONST INPUT_IS_REQUIRED_CODE = Response::HTTP_UNPROCESSABLE_ENTITY; // 422
+CONST INVALID_FORM_DATA_CODE = Response::HTTP_UNPROCESSABLE_ENTITY; // 422
 
 if (! function_exists('respond')) {
     /**
@@ -29,10 +31,11 @@ if (! function_exists('respond')) {
         $response['error'] = [
             'message' => $message,
             'type' => $type,
-            'code' => $code
+            'code' => $code,
+            'data' => $data
         ];
 
-        if (!empty($data))
+        if (!empty($data) and $code == 200)
             $response['data'] = $data;
 
         if (!empty($paginator))
@@ -134,6 +137,16 @@ if (! function_exists('member_not_found')) {
     function member_not_found(): JsonResponse
     {
         return respond('Member not found.', MEMBER_NOT_FOUND_CODE, [], MEMBER_NOT_FOUND);
+    }
+}
+
+if (! function_exists('invalid_form_data')) {
+    /**
+     * @return JsonResponse
+     */
+    function invalid_form_data($data): JsonResponse
+    {
+        return respond('invalid form data.', INVALID_FORM_DATA_CODE, $data, INVALID_FORM_DATA);
     }
 }
 
