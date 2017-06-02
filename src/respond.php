@@ -5,7 +5,7 @@ use Illuminate\Http\Response;
 
 CONST SUCCESS_STATUS = 'success';
 CONST NOT_FOUND_STATUS = 'not_found';
-CONST TOKEN_REQUIRED = 'token_not_found';
+CONST TOKEN_REQUIRED = 'token_required';
 CONST MEMBER_NOT_FOUND = 'member_not_found';
 CONST INPUT_IS_REQUIRED = 'input_required';
 CONST INVALID_FORM_DATA = 'invalid_form_data';
