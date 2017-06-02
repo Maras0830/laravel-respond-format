@@ -31,13 +31,16 @@ if (! function_exists('respond')) {
         $response['error'] = [
             'message' => $message,
             'type' => $type,
-            'code' => $code,
-            'data' => $data
+            'code' => $code
         ];
 
-        if (!empty($data) and $code == 200)
-            $response['data'] = $data;
-
+        if (!empty($data) and $code == 200) {
+            if ($code == 200)
+                $response['data'] = $data;
+            else
+                $response['error']['data'] = $data;
+        }
+        
         if (!empty($paginator))
             $response['paginator'] = $paginator;
 
