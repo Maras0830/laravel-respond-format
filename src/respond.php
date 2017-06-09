@@ -27,7 +27,7 @@ if (! function_exists('respond')) {
             $response['data'] = $data;
 
         if (!empty($meta))
-            $response['meta'] = $meta;
+            $response['meta'] = array_collapse($meta);
 
         return response()->json($response, 200);
     }
