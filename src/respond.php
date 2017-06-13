@@ -20,6 +20,8 @@ CONST INVALID_FORM_DATA_CODE = Response::HTTP_UNPROCESSABLE_ENTITY; // 422
 if (! function_exists('respond')) {
     function respond($data, array $error = [], ...$meta)
     {
+        $response = [];
+
         if (!empty($error))
             $response['error'] = $error;
 
@@ -29,7 +31,7 @@ if (! function_exists('respond')) {
         if (!empty($meta))
             $response['meta'] = array_collapse($meta);
 
-        return response()->json($response, 200);
+        return new JsonResponse($response,200);
     }
 }
 
@@ -44,7 +46,7 @@ if (! function_exists('not_found')) {
 }
 
 if (! function_exists('error_format')) {
-    function error_format(string $message, int $code, string $type, $data = [])
+    function error_format(string $message, int $code, string $type, ...$data)
     {
         $error_response = [
             "message" => $message,
@@ -52,8 +54,7 @@ if (! function_exists('error_format')) {
             "type" => $type
         ];
 
-        if (!empty($data))
-            $error_response['data'] = $data;
+        $error_response = !empty($data) ? array_merge($error_response, array_collapse($data)) : $error_response;
 
         return $error_response;
     }
@@ -64,9 +65,9 @@ if (! function_exists('input_is_required')) {
      * @param $data
      * @return JsonResponse
      */
-    function input_is_required($data): JsonResponse
+    function input_is_required($data = []): JsonResponse
     {
-        return respond([], error_format('Input required.', INPUT_IS_REQUIRED_CODE, INPUT_IS_REQUIRED));
+        return respond([], error_format('Input required.', INPUT_IS_REQUIRED_CODE, INPUT_IS_REQUIRED, $data));
     }
 }
 
@@ -94,11 +95,12 @@ if (! function_exists('member_not_found')) {
 
 if (! function_exists('form_data_invalid')) {
     /**
+     * @param array $data
      * @return JsonResponse
      */
-    function form_data_invalid($data): JsonResponse
+    function form_data_invalid($data = []): JsonResponse
     {
-        return respond([], error_format('Form data Invalid.', INVALID_FORM_DATA_CODE, INVALID_FORM_DATA));
+        return respond([], error_format('Form data Invalid.', INVALID_FORM_DATA_CODE, INVALID_FORM_DATA, $data));
     }
 }
 

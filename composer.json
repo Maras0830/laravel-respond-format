@@ -14,13 +14,18 @@
             "src/respond.php"
         ],
         "psr-4": {
+            "maras0830\\LaravelRespondFormat\\Tests\\": "tests"
         }
     },
     "require": {
         "php": ">=7.1",
-        "laravel/framework": ">=5.1"
+        "league/fractal": "~0.13"
     },
     "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "mockery/mockery": "~0.9",
+        "illuminate/contracts": "~5.0",
+        "illuminate/http": "~5.0"
     },
     "minimum-stability": "stable"
 }
