@@ -7,12 +7,12 @@ CONST MEMBER_NOT_FOUND = 'member_not_found';
 CONST INPUT_IS_REQUIRED = 'input_required';
 CONST INVALID_FORM_DATA = 'invalid_form_data';
 
-CONST SUCCESS_CODE = Illuminate\Http\Response::HTTP_OK; // 200
-CONST NOT_FOUND_CODE = Illuminate\Http\Response::HTTP_NOT_FOUND; // 404
-CONST TOKEN_REQUIRED_CODE = Illuminate\Http\Response::HTTP_NON_AUTHORITATIVE_INFORMATION; // 203
-CONST MEMBER_NOT_FOUND_CODE = Illuminate\Http\Response::HTTP_NOT_FOUND; // 404
-CONST INPUT_IS_REQUIRED_CODE = Illuminate\Http\Response::HTTP_UNPROCESSABLE_ENTITY; // 422
-CONST INVALID_FORM_DATA_CODE = Illuminate\Http\Response::HTTP_UNPROCESSABLE_ENTITY; // 422
+CONST SUCCESS_CODE = 200; //Symfony\Component\HttpFoundation\Response::HTTP_OK;
+CONST NOT_FOUND_CODE = 404; //Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND;
+CONST TOKEN_REQUIRED_CODE = 203; //Symfony\Component\HttpFoundation\Response::HTTP_NON_AUTHORITATIVE_INFORMATION;
+CONST MEMBER_NOT_FOUND_CODE = 404; //Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND;
+CONST INPUT_IS_REQUIRED_CODE = 422; //Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY;
+CONST INVALID_FORM_DATA_CODE = 422; //Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY;
 
 if (! function_exists('respond')) {
     function respond($data, array $error = [], ...$meta)
