@@ -1,6 +1,5 @@
-[![Total Downloads](https://img.shields.io/packagist/dt/maras0830/laravel-respond-format.svg?style=flat-square)](https://packagist.org/packages/maras0830/laravel-respond-format)
-
 # Laravel Respond Format
+[![Total Downloads](https://img.shields.io/packagist/dt/maras0830/laravel-respond-format.svg?style=flat-square)](https://packagist.org/packages/maras0830/laravel-respond-format)
 In the teamwork always have some different api response, laravel-respond-format integrate some common response to laravel helper, make this to be more simpler and clear.
 
 ## Installation
@@ -32,4 +31,3 @@ Data not fount response
 ```
 
 ## Document (Not Finish)
-
