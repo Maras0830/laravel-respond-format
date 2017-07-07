@@ -6,6 +6,7 @@ CONST TOKEN_REQUIRED = 'token_required';
 CONST MEMBER_NOT_FOUND = 'member_not_found';
 CONST INPUT_IS_REQUIRED = 'input_required';
 CONST INVALID_FORM_DATA = 'invalid_form_data';
+CONST INVALID_APP_KEY = 'invalid_app_key';
 
 CONST SUCCESS_CODE = 200; //Symfony\Component\HttpFoundation\Response::HTTP_OK;
 CONST NOT_FOUND_CODE = 404; //Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND;
@@ -13,6 +14,7 @@ CONST TOKEN_REQUIRED_CODE = 203; //Symfony\Component\HttpFoundation\Response::HT
 CONST MEMBER_NOT_FOUND_CODE = 404; //Symfony\Component\HttpFoundation\Response::HTTP_NOT_FOUND;
 CONST INPUT_IS_REQUIRED_CODE = 422; //Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY;
 CONST INVALID_FORM_DATA_CODE = 422; //Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY;
+CONST INVALID_APP_KEY_CODE = 403;
 
 if (! function_exists('respond')) {
     function respond($data, array $error = [], ...$meta)
@@ -79,6 +81,15 @@ if (! function_exists('token_required')) {
     }
 }
 
+if (! function_exists('app_key_invalid')) {
+    /**
+     * @return Illuminate\Http\JsonResponse
+     */
+    function app_key_invalid(): Illuminate\Http\JsonResponse
+    {
+        return respond([], error_format('APP KEY invalid.', INVALID_APP_KEY_CODE, INVALID_APP_KEY));
+    }
+}
 
 if (! function_exists('member_not_found')) {
     /**
@@ -100,4 +111,5 @@ if (! function_exists('form_data_invalid')) {
         return respond([], error_format('Form data Invalid.', INVALID_FORM_DATA_CODE, INVALID_FORM_DATA, $data));
     }
 }
+
 

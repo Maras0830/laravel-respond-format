@@ -110,6 +110,25 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($except, json_decode($actual->content(), true));
     }
 
+   public function test_app_key_invalid()
+   {
+        $error = [
+            'message' => 'APP KEY invalid.',
+            'code' => 403,
+            'type' => 'invalid_app_key'
+        ];
+
+        $except = [
+            'error' => $error
+        ];
+
+        $actual = app_key_invalid();
+
+        $this->assertTrue($actual instanceof JsonResponse);
+
+        $this->assertSame($except, json_decode($actual->content(), true));
+    }
+
     public function test_member_not_found()
     {
         $error = [
