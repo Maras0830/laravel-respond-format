@@ -34,7 +34,7 @@ if (! function_exists('respond')) {
             'code' => $code
         ];
 
-        if (!empty($data) and $code == 200) {
+        if (!empty($data)) {
             if ($code == 200)
                 $response['data'] = $data;
             else
